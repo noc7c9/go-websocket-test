@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head lang="en">
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Go WebSocket Test</title>
+        <link
+            href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+            rel="stylesheet"
+        />
+    </head>
+    <body class="bg-gray-100 text-gray-900">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <h1 class="text-4xl font-bold leading-tight">
+                Go WebSocket Test
+            </h1>
+
+            <div class="mt-4 flex justify-stretch">
+                <a
+                    id="btn-disconnect"
+                    href="javascript:;"
+                    class="inline-block flex items-center px-2 pb-1 rounded-md text-sm text-white font-semibold uppercase tracking-wider bg-red-500 hover:bg-red-600 text-white shadow"
+                >
+                    Disconnect
+                </a>
+                <a
+                    id="btn-connect"
+                    href="javascript:;"
+                    class="ml-2 inline-block flex items-center px-2 pb-1 rounded-md text-sm text-white font-semibold uppercase tracking-wider bg-green-500 hover:bg-green-600 text-white shadow"
+                >
+                    Connect
+                </a>
+                <a
+                    id="btn-send-ping"
+                    href="javascript:;"
+                    class="ml-2 inline-block flex items-center px-2 pb-1 rounded-md text-sm text-white font-semibold uppercase tracking-wider bg-blue-500 hover:bg-blue-600 text-white shadow"
+                >
+                    Send Ping
+                </a>
+
+                <div class="ml-2 inline-block flex flex-grow">
+                    <input
+                        id="input-send-text"
+                        type="text"
+                        placeholder="Message"
+                        class="px-2 py-1 w-full border border-r-0 rounded-l-md outline-none focus:border-blue-600"
+                    />
+                    <a
+                        id="btn-send-text"
+                        href="javascript:;"
+                        class="inline-block flex items-center px-2 pb-1 rounded-r-md text-sm text-white font-semibold uppercase tracking-wider bg-blue-500 hover:bg-blue-600 text-white shadow"
+                    >
+                        Send
+                    </a>
+                </div>
+            </div>
+
+            <a
+                id="btn-clear-event-stream"
+                href="javascript:;"
+                class="mt-3 block w-full px-2 py-1 text-sm text-center font-semibold uppercase tracking-wider bg-gray-300 hover:bg-gray-400 text-gray-600 rounded-t border-b border-gray-400"
+            >
+                Clear
+            </a>
+            <div id="event-stream" class="border rounded-b">
+                <template id="template-event-info">
+                    <div class="flex items-baseline px-1 py-1 bg-gray-200">
+                        <div
+                            class="flex-shrink-0 w-20 px-2 py-1 text-sm text-center uppercase font-semibold bg-gray-500 text-white rounded-sm"
+                        >
+                            info
+                        </div>
+                        <div
+                            class="event-date flex-shrink-0 mx-2 text-gray-700 text-xs font-mono"
+                        ></div>
+                        <div class="event-content text-gray-800"></div>
+                    </div>
+                </template>
+
+                <template id="template-event-warn">
+                    <div class="flex items-baseline px-1 py-1 bg-yellow-200">
+                        <div
+                            class="flex-shrink-0 w-20 px-2 py-1 text-sm text-center uppercase font-semibold bg-yellow-500 text-white rounded-sm"
+                        >
+                            warn
+                        </div>
+                        <div
+                            class="event-date flex-shrink-0 mx-2 text-yellow-700 text-xs font-mono"
+                        ></div>
+                        <div class="event-content text-gray-800"></div>
+                    </div>
+                </template>
+
+                <template id="template-event-error">
+                    <div class="flex items-baseline px-1 py-1 bg-red-200">
+                        <div
+                            class="flex-shrink-0 w-20 px-2 py-1 text-sm text-center uppercase font-semibold bg-red-500 text-white rounded-sm"
+                        >
+                            error
+                        </div>
+                        <div
+                            class="event-date flex-shrink-0 mx-2 text-red-700 text-xs font-mono"
+                        ></div>
+                        <div class="event-content text-gray-800"></div>
+                    </div>
+                </template>
+
+                <template id="template-event-client">
+                    <div class="flex items-baseline px-1 py-1 bg-teal-200">
+                        <div
+                            class="flex-shrink-0 w-20 px-2 py-1 text-sm text-center uppercase font-semibold bg-teal-500 text-white rounded-sm"
+                        >
+                            client
+                        </div>
+                        <div
+                            class="event-date flex-shrink-0 mx-2 text-teal-700 text-xs font-mono"
+                        ></div>
+                        <div
+                            class="event-content font-mono text-gray-800"
+                        ></div>
+                    </div>
+                </template>
+
+                <template id="template-event-server">
+                    <div class="flex items-baseline px-1 py-1 bg-purple-200">
+                        <div
+                            class="flex-shrink-0 w-20 px-2 py-1 text-sm text-center uppercase font-semibold bg-purple-500 text-white rounded-sm"
+                        >
+                            server
+                        </div>
+                        <div
+                            class="event-date flex-shrink-0 mx-2 text-purple-700 text-xs font-mono"
+                        ></div>
+                        <div
+                            class="event-content font-mono text-gray-800"
+                        ></div>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+        <script src="index.js"></script>
+    </body>
+</html>

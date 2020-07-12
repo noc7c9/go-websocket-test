@@ -1,0 +1,8 @@
+{
+    "scripts": {
+        "start": "browser-sync start --server --watch --host 0.0.0.0 --port 8080 --no-ghost-mode --no-open --no-ui"
+    },
+    "devDependencies": {
+        "browser-sync": "^2.26.7"
+    }
+}

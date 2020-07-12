@@ -1,0 +1,11 @@
+_list:
+    @just --list
+
+start:
+    gin --immediate --port 3000 run main.go
+
+run:
+    go run main.go
+
+build:
+    go build main.go
